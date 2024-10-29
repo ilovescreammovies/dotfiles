@@ -1,0 +1,11 @@
+# Company account
+Host company
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/work
+
+# Personal account
+Host personal
+HostName github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/personal
