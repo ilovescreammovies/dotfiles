@@ -1,0 +1,7 @@
+import = ["~/.config/alacritty/theme.toml"]
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "Hack Nerd Font"
