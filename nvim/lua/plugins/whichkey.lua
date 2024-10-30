@@ -10,7 +10,7 @@ return {
             { '<leader>b', group = '[B]uffer' },
             { '<leader>w', group = '[W]orkspace' },
             { '<leader>t', group = '[T]oggle' },
-            { '<leader>g', group = 'Git [H]unk', mode = { 'n', 'v' } },
+            { '<leader>g', group = '[G]it', mode = { 'n', 'v' } },
         },
     },
     keys = {
