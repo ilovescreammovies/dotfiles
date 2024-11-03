@@ -8,6 +8,11 @@ return {
     },
     opts = {},
     config = function()
-        vim.keymap.set('n', '<space>te', '<cmd>Neotree toggle<CR>', { desc = '[T]oggle [E]xplorer' })
+        vim.keymap.set(
+            'n',
+            '<space>te',
+            '<cmd>Neotree filesystem toggle reveal right<CR>',
+            { desc = '[T]oggle [E]xplorer' }
+        )
     end,
 }

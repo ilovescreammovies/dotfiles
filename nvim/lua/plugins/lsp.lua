@@ -91,6 +91,10 @@ return {
                     },
                 },
                 vtsls = {},
+                jsonls = {},
+                bashls = {},
+                docker_compose_language_service = {},
+                dockerls = {},
             }
 
             require('mason').setup()
