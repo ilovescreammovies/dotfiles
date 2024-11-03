@@ -2,7 +2,7 @@
 Host company
 HostName github.com
 PreferredAuthentications publickey
-IdentityFile ~/.ssh/work
+IdentityFile ~/.ssh/company
 
 # Personal account
 Host personal

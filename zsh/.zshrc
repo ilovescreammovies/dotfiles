@@ -46,11 +46,11 @@ case $(check_ssh_agent; echo $?) in
         ;;
     1)
         echo "No keys present, adding keys..."
-        ssh-add ~/.ssh/{personal,work}
+        ssh-add ~/.ssh/{personal,company}
         ;;
     2)
         echo "Starting ssh-agent and adding keys..."
         eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/{personal,work}
+        ssh-add ~/.ssh/{personal,company}
         ;;
 esac
