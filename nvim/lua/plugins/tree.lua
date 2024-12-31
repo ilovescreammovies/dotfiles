@@ -11,7 +11,7 @@ return {
         vim.keymap.set(
             'n',
             '<space>te',
-            '<cmd>Neotree filesystem toggle reveal<CR>',
+            '<cmd>Neotree filesystem toggle reveal right<CR>',
             { desc = '[T]oggle [E]xplorer' }
         )
     end,
