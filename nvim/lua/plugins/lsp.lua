@@ -95,6 +95,13 @@ return {
                 bashls = {},
                 docker_compose_language_service = {},
                 dockerls = {},
+                gopls = {
+                    settings = {
+                        gopls = {
+                            gofumpt = true,
+                        },
+                    },
+                },
             }
 
             require('mason').setup()
@@ -103,8 +110,8 @@ return {
             vim.list_extend(ensure_installed, {
                 'stylua',
                 'prettier',
+                'gofumpt',
             })
-            require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
 
             require('mason-lspconfig').setup({
                 handlers = {
