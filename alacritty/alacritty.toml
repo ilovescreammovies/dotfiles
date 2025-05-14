@@ -1,0 +1,8 @@
+[general]
+import = ["~/dotfiles/alacritty/themes/themes/dracula_plus.toml"]
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"

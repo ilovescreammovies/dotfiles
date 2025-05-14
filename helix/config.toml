@@ -1,0 +1,27 @@
+theme = "tokyonight_moon"
+
+[editor]
+scrolloff = 10
+mouse = true
+shell = ["zsh", "-c"]
+line-number = "relative"
+cursorline = true
+auto-format = false
+bufferline = "multiple"
+color-modes = true
+default-line-ending = "lf"
+insert-final-newline = true
+rulers = [90]
+
+[editor.statusline]
+separator = "|"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"

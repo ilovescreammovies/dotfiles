@@ -1,0 +1,5 @@
+zsh/ohmyzsh
+zsh/.zcompdump*
+zsh/.zsh_history
+tmux/plugins
+alacritty/themes
