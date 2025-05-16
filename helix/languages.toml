@@ -1,4 +1,5 @@
-[[language]]
-name = "go"
-auto-format = true
-formatter = { command = "gofumpt" , args = ["-extra"] }
+[language-server.gopls.config]
+"formatting.gofumpt" = true
+
+[language-server.golangci-lint-lsp.config]
+command = ["golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1"]
