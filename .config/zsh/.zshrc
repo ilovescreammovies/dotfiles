@@ -1,5 +1,6 @@
 export PATH="$HOME/.local/bin:/usr/local/bin:$PATH"
 export ZSH="$ZDOTDIR/ohmyzsh"
+export EDITOR=helix
 
 ZSH_THEME="muse"
 DISABLE_AUTO_TITLE=true
