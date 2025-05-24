@@ -1,0 +1,12 @@
+[init]
+        defaultBranch = main
+[user]
+        name = name
+        email = email
+        signingkey = /path/to/signingkey
+[gpg]
+        format = ssh
+[commit]
+        gpgsign = true
+[tag]
+        gpgSign = true

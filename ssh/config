@@ -1,0 +1,11 @@
+Host *
+	PreferredAuthentications publickey
+	IdentitiesOnly yes
+Host hostname.com-something
+	HostName realhostname.com
+	User user123
+	IdentityFile /path/to/privatekey
+Host hostname.com-otherthing
+	HostName realhostname.com
+	User user123
+	IdentityFile /path/to/privatekey
