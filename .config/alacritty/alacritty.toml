@@ -1,0 +1,10 @@
+[general]
+import = ["~/dotfiles/alacritty/themes/themes/citylights.toml"]
+
+[window]
+startup_mode = "Maximized"
+dynamic_title = false
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 13.0

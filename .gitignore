@@ -1,5 +1,6 @@
-zsh/ohmyzsh
-zsh/.zcompdump*
-zsh/.zsh_history
-tmux/plugins
-alacritty/themes
+.config/zsh/ohmyzsh
+.config/zsh/.zcompdump*
+.config/zsh/.zsh_history
+.config/tmux/plugins
+.config/alacritty/themes
+.config/yazi/flavors
