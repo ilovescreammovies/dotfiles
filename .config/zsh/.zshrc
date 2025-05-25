@@ -15,6 +15,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias hx="helix"
 alias lzg="lazygit"
 alias lzd="lazydocker"
 
