@@ -1,5 +1,5 @@
 [general]
-import = ["~/dotfiles/alacritty/themes/themes/citylights.toml"]
+import = ["~/dotfiles/alacritty/themes/citylights.toml"]
 
 [window]
 startup_mode = "Maximized"
