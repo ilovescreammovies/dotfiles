@@ -7,6 +7,7 @@ DISABLE_AUTO_TITLE=true
 zstyle ':omz:update' mode reminder
 
 plugins=(
+        zsh-vi-mode
         git
         colored-man-pages
         fast-syntax-highlighting
