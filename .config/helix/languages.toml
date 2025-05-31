@@ -37,7 +37,7 @@ formatter = { command = "sqlformat", args = [
 [[language]]
 name = "go"
 [language-server.gopls.config]
-"formatting.gofumpt" = true
+formatting.gofumpt = true
 [language-server.golangci-lint-lsp.config]
 command = [
   "golangci-lint",
