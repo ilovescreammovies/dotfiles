@@ -7,7 +7,18 @@ My system configuration.
 Ensure the following packages are installed:
 
 ```bash
-sudo pacman -S git stow alacritty zsh fd ripgrep fzf helix tmux yazi
+sudo pacman -S git \
+  stow \
+  alacritty \
+  zsh \
+  fd \
+  ripgrep \
+  fzf \
+  helix \
+  tmux \
+  yazi \
+  lazygit \
+  wl-clipboard
 ```
 
 ## Installation
@@ -26,7 +37,7 @@ cd $HOME/dotfiles && stow .
 
 3. Reload or source the shell.
 
-4. Install dependencies:
+## Install dependencies
 
 - **zsh**
   1. Plugin manager:
@@ -42,6 +53,11 @@ cd $HOME/dotfiles && stow .
   ```bash
   git clone https://github.com/marlonrichert/zsh-autocomplete.git \
     $ZSH_CUSTOM/plugins/zsh-autocomplete
+  ```
+  4. Vi mode:
+  ```bash
+   git clone https://github.com/jeffreytse/zsh-vi-mode \
+    $ZSH_CUSTOM/plugins/zsh-vi-mode
   ```
 - **tmux**
   1. Plugin manager:
