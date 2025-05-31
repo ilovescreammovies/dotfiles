@@ -3,8 +3,47 @@ name = "javascript"
 formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = false
 
+[[language]]
+name = "typescript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = false
+
+[[language]]
+name = "tsx"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
+auto-format = false
+
+[[language]]
+name = "markdown"
+formatter = { command = 'prettier', args = ["--parser", "markdown"] }
+auto-format = false
+
+[[language]]
+name = "sql"
+formatter = { command = "sqlformat", args = [
+  "--indent_width",
+  "2",
+  "--keywords",
+  "upper",
+  "--identifiers",
+  "lower",
+  "-",
+] }
+auto-format = false
+
+[[language]]
+name = "go"
+auto-format = false
+
 [language-server.gopls.config]
 "formatting.gofumpt" = true
 
 [language-server.golangci-lint-lsp.config]
-command = ["golangci-lint", "run", "--output.json.path", "stdout", "--show-stats=false", "--issues-exit-code=1"]
+command = [
+  "golangci-lint",
+  "run",
+  "--output.json.path",
+  "stdout",
+  "--show-stats=false",
+  "--issues-exit-code=1",
+]
