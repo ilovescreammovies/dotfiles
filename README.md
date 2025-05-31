@@ -29,13 +29,19 @@ sudo pacman -S git \
 git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
 ```
 
-2. Create the symlinks using GNU Stow.
+2. Run Stow in simulation mode, then check and fix possible conflicts.
 
 ```bash
-cd $HOME/dotfiles && stow .
+cd $HOME/dotfiles && stow --simulate -v .
 ```
 
-3. Reload or source the shell.
+3. Create the symlinks using GNU Stow.
+
+```bash
+stow -v .
+```
+
+4. Reload or source the shell.
 
 ## Install dependencies
 
