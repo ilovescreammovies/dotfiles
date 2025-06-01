@@ -4,7 +4,7 @@ My system configuration.
 
 ## Requirements
 
-Ensure the following packages are installed:
+Ensure that the following packages are installed locally:
 
 ```bash
 sudo pacman -S git \
@@ -31,19 +31,20 @@ sudo pacman -S git \
 
 ### Setup dotfiles
 
-1. Clone the dotfiles into `$HOME` directory.
+1. Clone the dotfiles into the `$HOME` directory.
 
 ```bash
 git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
 ```
 
-2. Run Stow in simulation mode, then check and fix possible conflicts.
+2. Run Stow in simulation mode to check for possible conflicts. If any are found, fix them before proceeding.
 
 ```bash
-cd $HOME/dotfiles && stow --simulate -v .
+cd $HOME/dotfiles
+stow --simulate -v .
 ```
 
-3. Create the symlinks using GNU Stow.
+3. Use GNU Stow to create the symlinks.
 
 ```bash
 stow -v .
@@ -107,7 +108,8 @@ sudo tar -C /usr/local -xzf "/tmp/$GO_SOURCE_FILENAME"
 - NVM
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+NVM_VERSION=<desired_version>
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | bash
 ```
 
 - Node
@@ -116,7 +118,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install node
 ```
 
-2. Language servers and debuggers:
+2. Language Servers and Debuggers:
 
 ```bash
 go install golang.org/x/tools/gopls@latest && \
