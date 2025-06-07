@@ -4,53 +4,65 @@ My system configuration.
 
 ## Requirements
 
-Ensure that the following packages are installed locally:
+1. Clone the dotfiles into the `$HOME` directory and `cd` into it.
 
 ```bash
-sudo pacman -S git \
-  stow \
-  alacritty \
-  zsh \
-  fd \
-  ripgrep \
-  fzf \
-  helix \
-  tmux \
-  yazi \
-  lazygit \
-  wl-clipboard \
-  bash-language-server \
-  yaml-language-server \
-  typescript-language-server \
-  marksman \
-  taplo-cli \
-  python-sqlparse
+git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+```
+
+2. Ensure that the following packages are installed locally:
+
+### Pacman
+
+1. Install packages.
+
+```bash
+sudo pacman -S --needed - < pacman.txt
+```
+
+### Yay
+
+1. Install yay binary.
+
+```bash
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+
+2. Generate development package DB.
+
+```bash
+yay -Y --gendb
+yay -Syu --devel
+yay -Y --devel --save
+```
+
+3. Install AUR packages.
+
+```bash
+yay -S --needed - < aur.txt
 ```
 
 ## Instructions
 
 ### Setup dotfiles
 
-1. Clone the dotfiles into the `$HOME` directory.
-
-```bash
-git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
-```
-
-2. Run Stow in simulation mode to check for possible conflicts. If any are found, fix them before proceeding.
+1. Run Stow in simulation mode to check for possible conflicts. If any are found, fix them before proceeding.
 
 ```bash
 cd $HOME/dotfiles
 stow --simulate -v .
 ```
 
-3. Use GNU Stow to create the symlinks.
+2. Use GNU Stow to create the symlinks.
 
 ```bash
 stow -v .
 ```
 
-4. Reload or source the shell.
+3. Reload or source the shell.
 
 ### Dependencies installation
 
@@ -60,27 +72,6 @@ stow -v .
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
-2. Syntax highlighting:
-
-```bash
-git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
-  $ZSH_CUSTOM/plugins/fast-syntax-highlighting
-```
-
-3. Autocompletion:
-
-```bash
-git clone https://github.com/marlonrichert/zsh-autocomplete.git \
-  $ZSH_CUSTOM/plugins/zsh-autocomplete
-```
-
-4. Vi mode:
-
-```bash
-git clone https://github.com/jeffreytse/zsh-vi-mode \
-  $ZSH_CUSTOM/plugins/zsh-vi-mode
 ```
 
 #### tmux
