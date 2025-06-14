@@ -89,19 +89,21 @@ git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
 - Go
 
 ```bash
-GO_VERSION="<desired_version>"
+GO_VERSION="1.24.4"
 GO_SOURCE_FILENAME="go$GO_VERSION.linux-amd64.tar.gz"
 GO_SOURCE="https://dl.google.com/go/$GO_SOURCE_FILENAME"
 curl --output-dir /tmp -O $GO_SOURCE && \
-sudo tar -C /usr/local -xzf "/tmp/$GO_SOURCE_FILENAME"
+sudo rm -rf /usr/local/go; sudo tar -C /usr/local -xzf "/tmp/$GO_SOURCE_FILENAME"
 ```
 
 - NVM
 
 ```bash
-NVM_VERSION=<desired_version>
-curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh" | bash
+NVM_VERSION=v0.40.3
+curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh" | bash
 ```
+
+Reload the shell.
 
 - Node
 
@@ -114,7 +116,9 @@ nvm install node
 ```bash
 go install golang.org/x/tools/gopls@latest && \
 go install github.com/go-delve/delve/cmd/dlv@latest && \
-go install github.com/nametake/golangci-lint-langserver@latest
+go install github.com/nametake/golangci-lint-langserver@latest && \
+npm install -g dockerfile-language-server-nodejs@latest \
+@microsoft/compose-language-service@latest
 ```
 
 3. Formatters and other tools:

@@ -34,10 +34,12 @@ formatter = { command = "sqlformat", args = [
   "-",
 ] }
 
-[[language]]
-name = "go"
 [language-server.gopls.config]
-formatting.gofumpt = true
+local = "goimports"
+gofumpt = true
+semanticTokens = true
+staticcheck = true
+
 [language-server.golangci-lint-lsp.config]
 command = [
   "golangci-lint",
@@ -47,6 +49,11 @@ command = [
   "--show-stats=false",
   "--issues-exit-code=1",
 ]
+
+[[language]]
+name = "go"
+roots = ["go.mod", "go.sum", "main.go"]
+language-servers = ["gopls", "golangci-lint-lsp"]
 
 [[language]]
 name = "bash"
