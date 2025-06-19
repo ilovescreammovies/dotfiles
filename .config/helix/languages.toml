@@ -59,3 +59,7 @@ language-servers = ["gopls", "golangci-lint-lsp"]
 name = "bash"
 indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "shfmt" }
+
+[[language]]
+name = "markdown"
+soft-wrap = { enable = true }

@@ -1,4 +1,4 @@
-theme = "everforest_dark"
+theme = "catppuccin_macchiato"
 
 [editor]
 scrolloff = 10
@@ -16,6 +16,10 @@ rulers = [80]
 completion-replace = true
 true-color = true
 undercurl = true
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
 
 [editor.statusline]
 mode.normal = "NORMAL"

@@ -1,5 +1,5 @@
 [colors.primary]
-background = "#1e282d"
+background = "#1c1c2b"
 foreground = "#c4c7d1"
 
 [colors.normal]
@@ -23,9 +23,10 @@ cyan = "#35434d"
 white = "#ffffff"
 
 [window]
-startup_mode = "Maximized"
+dimensions = { columns = 155, lines = 44 }
 dynamic_title = false
+decorations = "None"
 
 [font]
-normal = { family = "Fira Code Nerd Font" }
+normal = { family = "Hack Nerd Font" }
 size = 13.0
