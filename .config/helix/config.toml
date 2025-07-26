@@ -1,4 +1,4 @@
-theme = "catppuccin_macchiato"
+theme = "dark_plus"
 
 [editor]
 scrolloff = 10
@@ -32,3 +32,7 @@ tab = "all"
 nbsp = "none"
 nnbsp = "none"
 newline = "none"
+
+[keys.insert]
+j = { f = "normal_mode" }
+f = { j = "normal_mode" }
