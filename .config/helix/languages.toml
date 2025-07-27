@@ -37,6 +37,11 @@ formatter = { command = "sqlformat", args = [
   "lower",
   "-",
 ] }
+language-servers = ["postgres-language-server"]
+
+[language-server.postgres-language-server]
+command = "postgrestools"
+args = ["lsp-proxy"]
 
 [language-server.gopls.config]
 local = "goimports"
