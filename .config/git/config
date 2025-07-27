@@ -10,3 +10,6 @@
         gpgsign = true
 [tag]
         gpgSign = true
+# If .git directory is inside work directory, include work.config
+[includeIf "gitdir:~/work/**"]
+        path = ~/.config/git/work.config

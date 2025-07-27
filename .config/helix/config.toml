@@ -1,4 +1,4 @@
-theme = "dark_plus"
+theme = "kaolin-valley-dark"
 
 [editor]
 scrolloff = 10
@@ -17,14 +17,28 @@ completion-replace = true
 true-color = true
 undercurl = true
 end-of-line-diagnostics = "hint"
+popup-border = "all"
 
 [editor.inline-diagnostics]
 cursor-line = "warning"
 
 [editor.statusline]
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
+left = ["mode", "file-name", "version-control"]
+center = []
+right = [
+  "spinner",
+  "workspace-diagnostics",
+  "diagnostics",
+  "file-type",
+  "position",
+  "position-percentage",
+]
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
+
+[editor.lsp]
+display-inlay-hints = false
 
 [editor.whitespace.render]
 space = "all"

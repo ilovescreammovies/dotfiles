@@ -15,9 +15,11 @@ source $SHARED_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zs
 alias hx="helix"
 alias lg="lazygit"
 alias ld="lazydocker"
+alias lj="lazyjournal"
 alias ls="ls --color=auto"
 alias grep="rg --color=auto"
 alias top="top -E g -e g"
+alias tmux="tmux -2"
 
 # User environment variables
 export PATH=$HOME/go/bin:$PATH
