@@ -17,6 +17,7 @@ alias lg="lazygit"
 alias ld="lazydocker"
 alias ls="ls --color=auto"
 alias grep="rg --color=auto"
+alias top="top -E g -e g"
 
 # User environment variables
 export PATH=$HOME/go/bin:$PATH
