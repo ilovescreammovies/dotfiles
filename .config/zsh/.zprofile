@@ -1,3 +1,3 @@
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-    /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+	exec sway --unsupported-gpu
 fi

@@ -1,10 +1,3 @@
-# Oh My Zsh
-export ZSH=$ZDOTDIR/ohmyzsh
-ZSH_THEME="robbyrussell"
-DISABLE_AUTO_TITLE=true
-zstyle ':omz:update' mode reminder
-source $ZSH/oh-my-zsh.sh
-
 # Local installed plugins
 SHARED_PLUGINS=/usr/share/zsh/plugins
 source $SHARED_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
@@ -19,9 +12,9 @@ alias lj="lazyjournal"
 alias ls="ls --color=auto"
 alias grep="rg --color=auto"
 alias top="top -E g -e g"
-alias tmux="tmux -2"
 
-# User environment variables
+# Environment variables
+export PS1="%F{green}%n%f@%F{magenta}%m%f:%B%F{cyan}%c%f%b %# "
 export PATH=$HOME/go/bin:$PATH
 export EDITOR=helix
 
@@ -40,5 +33,5 @@ function y() {
 }
 
 if command -v tmux &>/dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	tmux new-session -A -s main
+	tmux -2 new-session -A -s main
 fi

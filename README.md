@@ -11,40 +11,6 @@ git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 ```
 
-2. Ensure that the following packages are installed locally:
-
-### Pacman
-
-1. Install packages.
-
-```bash
-sudo pacman -S --needed - < pacman.txt
-```
-
-### Yay
-
-1. Install yay binary.
-
-```bash
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
-```
-
-2. Generate development package DB.
-
-```bash
-yay -Y --gendb
-yay -Syu --devel
-yay -Y --devel --save
-```
-
-3. Install AUR packages.
-
-```bash
-yay -S --needed - < aur.txt
-```
-
 ## Instructions
 
 ### Setup dotfiles
@@ -65,14 +31,6 @@ stow -v .
 3. Reload or source the shell.
 
 ### Dependencies installation
-
-#### zsh
-
-1. Plugin manager:
-
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
 
 #### tmux
 
