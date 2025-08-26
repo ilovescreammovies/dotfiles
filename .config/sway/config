@@ -32,8 +32,8 @@ output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/wallpaper.jpg fill
 
 ### Idle configuration
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
-    timeout 600 'swaymsg "output * power off"' \
+    timeout 1800 'swaylock -f -c 00000' \
+    timeout 3600 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f -c 000000'
 
@@ -218,8 +218,8 @@ bar {
     status_command i3status
 
     colors {
-        statusline #ffffff
-        background #323232
+        statusline #eeeeee
+        background #080808
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
