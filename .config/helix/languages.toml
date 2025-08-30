@@ -1,22 +1,74 @@
+[language-server]
+gopls = { config = { local = "goimports", gofumpt = true, semanticTokens = true, staticcheck = true } }
+postgres-language-server = { command = "postgrestools", args = ["lsp-proxy"] }
+docker-langserver = { command = "docker-langserver", args = [
+  "start",
+  "--stdio",
+  "--debug",
+  "--verbose",
+  "-",
+] }
+docker-compose-langserver = { command = "docker-compose-langserver", args = [
+  "start",
+  "--stdio",
+  "--debug",
+  "--verbose",
+  "-",
+] }
+golangci-lint-lsp = { config = { command = [
+  "golangci-lint",
+  "run",
+  "--output.json.path",
+  "stdout",
+  "--show-stats=false",
+  "--issues-exit-code=1",
+] } }
+biome = { command = "biome", args = ["lsp-proxy"] }
+
 [[language]]
 name = "javascript"
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "typescript"
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "tsx"
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
+
+[[language]]
+name = "jsx"
+language-servers = [
+  { name = "typescript-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "json"
-formatter = { command = "prettier", args = ["--parser", "json"] }
-
-[[language]]
-name = "jsonc"
-formatter = { command = "prettier", args = ["--parser", "jsonc"] }
+language-servers = [
+  { name = "vscode-json-language-server", except-features = [
+    "format",
+  ] },
+  "biome",
+]
 
 [[language]]
 name = "markdown"
@@ -28,36 +80,16 @@ formatter = { command = "prettier", args = ["--parser", "html"] }
 
 [[language]]
 name = "sql"
-formatter = { command = "sqlformat", args = [
-  "--indent_width",
-  "2",
-  "--keywords",
-  "upper",
-  "--identifiers",
-  "lower",
-  "-",
-] }
+# formatter = { command = "sqlformat", args = [
+#   "--indent_width",
+#   "2",
+#   "--keywords",
+#   "upper",
+#   "--identifiers",
+#   "lower",
+#   "-",
+# ] }
 language-servers = ["postgres-language-server"]
-
-[language-server.postgres-language-server]
-command = "postgrestools"
-args = ["lsp-proxy"]
-
-[language-server.gopls.config]
-local = "goimports"
-gofumpt = true
-semanticTokens = true
-staticcheck = true
-
-[language-server.golangci-lint-lsp.config]
-command = [
-  "golangci-lint",
-  "run",
-  "--output.json.path",
-  "stdout",
-  "--show-stats=false",
-  "--issues-exit-code=1",
-]
 
 [[language]]
 name = "go"
@@ -72,3 +104,25 @@ formatter = { command = "shfmt" }
 [[language]]
 name = "markdown"
 soft-wrap = { enable = true }
+
+[[language]]
+name = "toml"
+formatter = { command = "taplo", args = ["fmt", "-"] }
+language-servers = ["taplo"]
+
+[[language]]
+name = "dockerfile"
+file-types = ["Dockerfile", { glob = "Dockerfile" }, { glob = "*.Dockerfile" }]
+language-servers = ["docker-langserver"]
+
+[[language]]
+name = "docker-compose"
+file-types = [
+  { glob = "docker-compose.yaml" },
+  { glob = "docker-compose.yml" },
+  { glob = "compose.yaml" },
+  { glob = "compose.yml" },
+  { glob = "*.compose.yaml" },
+  { glob = "*.compose.yml" },
+]
+language-servers = ["docker-compose-langserver", "yaml-language-server"]

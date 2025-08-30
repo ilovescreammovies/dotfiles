@@ -46,6 +46,8 @@ git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
 
 - Go
 
+Download and setup Go installation:
+
 ```bash
 GO_VERSION="1.25.0"
 GO_SOURCE_FILENAME="go$GO_VERSION.linux-amd64.tar.gz"
@@ -55,36 +57,52 @@ sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "/tmp/$GO_SOURCE_FILENAME"
 ```
 
-- NVM
+- Node
+
+Install NVM:
 
 ```bash
 NVM_VERSION=v0.40.3
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh" | bash
 ```
 
-Reload the shell.
+Reload the shell:
 
-- Node
+```bash
+exec zsh
+```
+
+Install the latest version of node:
 
 ```bash
 nvm install node
 ```
 
-2. Language Servers and Debuggers:
+2. Language servers, debuggers, formatters and other tools:
+
+Install the ones available in pacman:
+
+```bash
+sudo pacman -Sy marksman \
+  typescript-language-server \
+  zsh-autosuggestions \
+  zsh-autocomplete \
+  zsh-syntax-highlighting \
+  yaml-language-server \
+  bash-language-server
+```
+
+And those available only in language package managers:
 
 ```bash
 go install golang.org/x/tools/gopls@latest && \
 go install github.com/go-delve/delve/cmd/dlv@latest && \
-go install github.com/nametake/golangci-lint-langserver@latest && \
-npm install -g dockerfile-language-server-nodejs@latest \
-@microsoft/compose-language-service@latest \
-@postgrestools/postgrestools
-```
-
-3. Formatters and other tools:
-
-```bash
-npm install -g prettier && \
 go install mvdan.cc/gofumpt@latest && \
-go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest
+go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest && \
+go install github.com/nametake/golangci-lint-langserver@latest && \
+npm install -g  \
+  dockerfile-language-server-nodejs \
+  @microsoft/compose-language-service@latest \
+  @postgrestools/postgrestools \
+  @biomejs/biome
 ```
