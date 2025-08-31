@@ -80,7 +80,7 @@ nvm install node
 
 2. Language servers, debuggers, formatters and other tools:
 
-Install the ones available in pacman:
+Install those available in pacman:
 
 ```bash
 sudo pacman -Sy marksman \
@@ -92,7 +92,7 @@ sudo pacman -Sy marksman \
   bash-language-server
 ```
 
-And those available only in language package managers:
+Install those that are only available in other package managers:
 
 ```bash
 go install golang.org/x/tools/gopls@latest && \
