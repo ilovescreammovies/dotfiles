@@ -42,7 +42,7 @@ git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
 
 #### helix
 
-1. Language binaries:
+1. **Language binaries:**
 
 - Go
 
@@ -78,7 +78,7 @@ Install the latest version of node:
 nvm install node
 ```
 
-2. Language servers, debuggers, formatters and other tools:
+2. **Language servers, debuggers, formatters and other tools:**
 
 Install those available in pacman:
 
@@ -101,8 +101,8 @@ go install mvdan.cc/gofumpt@latest && \
 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest && \
 go install github.com/nametake/golangci-lint-langserver@latest && \
 npm install -g  \
-  dockerfile-language-server-nodejs \
+  dockerfile-language-server-nodejs@latest \
   @microsoft/compose-language-service@latest \
-  @postgrestools/postgrestools \
-  @biomejs/biome
+  @postgrestools/postgrestools@latest \
+  @biomejs/biome@latest
 ```
