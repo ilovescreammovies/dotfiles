@@ -177,13 +177,9 @@ passwd username
 exit
 ```
 
-4. Insert USB and copy dotfiles directory to $HOME
+4. Insert and mount USB stick and copy dotfiles directory to $HOME
 
-```bash
-cp /run/media/goofytux/usbname/dotfiles ~/dotfiles
-```
-
-5. Go througth the steps in [Setup Dotfiles](/README.md#setup-dotfiles) and [Dependencies installation](/README.md#dependencies-installation) to have a fully integrated editor and shell.
+5. Go througth the steps in [Setup Dotfiles](/README.md#setup-dotfiles) and [Dependencies installation](/README.md#dependencies-installation) to have a full integrated shell and text editor.
 
 6. Configure pacman
 
