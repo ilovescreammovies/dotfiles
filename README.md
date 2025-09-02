@@ -4,10 +4,10 @@ My system configuration.
 
 ## Requirements
 
-1. Clone the dotfiles into the `$HOME` directory and `cd` into it.
+Clone the dotfiles into the `$HOME` directory and `cd` into it.
 
 ```bash
-git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles
+git clone git@github.com:ilovescreammovies/dotfiles.git $HOME/dotfiles && \
 cd $HOME/dotfiles
 ```
 
@@ -15,38 +15,46 @@ cd $HOME/dotfiles
 
 ### Setup dotfiles
 
-1. Run Stow in simulation mode to check for possible conflicts. If any are found, fix them before proceeding.
+Run Stow in simulation mode to check for possible conflicts. If any are found, fix them before proceeding.
 
 ```bash
 cd $HOME/dotfiles
 stow --simulate -v .
 ```
 
-2. Use GNU Stow to create the symlinks.
+Use Stow to create the symlinks.
 
 ```bash
 stow -v .
 ```
 
-3. Reload or source the shell.
+Reload or source the shell.
 
 ### Dependencies installation
 
-#### tmux
+- **zsh**
 
-1. Plugin manager:
+```bash
+sudo pacman -Sy zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting
+```
+
+- **tmux**
+
+Install plugin manager.
 
 ```bash
 git clone https://github.com/tmux-plugins/tpm $XDG_CONFIG_HOME/tmux/plugins/tpm
 ```
 
-#### helix
+Install TUI tools.
 
-1. **Language binaries:**
+```bash
+sudo pacman -Sy lazygit lazydocker
+```
 
-- Go
+- **helix**
 
-Download and setup Go installation:
+Download and setup Go language support.
 
 ```bash
 GO_VERSION="1.25.0"
@@ -57,42 +65,36 @@ sudo rm -rf /usr/local/go && \
 sudo tar -C /usr/local -xzf "/tmp/$GO_SOURCE_FILENAME"
 ```
 
-- Node
-
-Install NVM:
+Download and setup NVM.
 
 ```bash
 NVM_VERSION=v0.40.3
 curl -o- "https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh" | bash
 ```
 
-Reload the shell:
+Reload the shell.
 
 ```bash
 exec zsh
 ```
 
-Install the latest version of node:
+Install the latest version of node.
 
 ```bash
 nvm install node
 ```
 
-2. **Language servers, debuggers, formatters and other tools:**
-
-Install those available in pacman:
+Install language servers, debuggers, formatters and other tools.
 
 ```bash
-sudo pacman -Sy marksman \
+sudo pacman -Sy yaml-language-server \
+  bash-language-server \
   typescript-language-server \
-  zsh-autosuggestions \
-  zsh-autocomplete \
-  zsh-syntax-highlighting \
-  yaml-language-server \
-  bash-language-server
+  marksman \
+  vscode-css-languageserver \
+  vscode-html-languageserver \
+  vscode-json-languageserver
 ```
-
-Install those that are only available in other package managers:
 
 ```bash
 go install golang.org/x/tools/gopls@latest && \
