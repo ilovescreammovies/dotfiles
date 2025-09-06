@@ -31,11 +31,12 @@ tooltip {
 
 
 #workspaces button {
-  margin: 4px;
+  margin: 4px 2px;
+  padding: 4px;
   color: #124e78;
-  border-bottom: 2px solid #7cc6fe;
 }
 
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
   background: inherit;
   box-shadow: inherit;
@@ -43,22 +44,29 @@ tooltip {
 }
 
 #workspaces button.focused {
-  color: #c7f9cc;
   background-color: #124e78;
-  font-weight: bold;
+  color: #c7f9cc;
+  border-bottom: 2px solid #DC602E;
 }
 
 #workspaces button.urgent {
-  background-color: #fb8500;
+  background-color: #C04E21;
+  font-weight: bold;
   color: #1d2021;
 }
 
 #cpu.critical,
 #temperature.critical,
 #memory.critical,
-#battery.critical,
-#battery.urgent {
-  background-color: #fb8500;
-  border: 2px dotted #ffb703;
+#battery.critical {
+  background-color: #C04E21;
+  border: 2px dotted #F1D302;
+  color: #1d2021;
+}
+
+
+#battery.warning {
+  background-color: #F1D302;
+  border: 2px dotted #C04E21;
   color: #1d2021;
 }
