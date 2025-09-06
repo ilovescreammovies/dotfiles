@@ -21,7 +21,8 @@
     "memory",
     "battery",
     "network",
-    "pulseaudio"
+    "wireplumber#sink",
+    "wireplumber#source"
   ],
   "sway/workspaces": {
     "all-outputs": true,
@@ -71,12 +72,15 @@
     "format-disconnected": "no network",
     "tooltip": false
   },
-  "pulseaudio": {
+  "wireplumber#sink": {
     "format": "vol {volume}%",
-    "format-bluetooth": "vol {volume}%",
     "format-muted": "vol muted",
-    "max-volume": 150,
-    "on-click": "pavucontrol",
     "scroll-step": 5
+  },
+  "wireplumber#source": {
+    "node-type": "Audio/Source",
+    "format": "mic {volume}%",
+    "format-muted": "mic muted",
+    "scroll-step": 1
   }
 }

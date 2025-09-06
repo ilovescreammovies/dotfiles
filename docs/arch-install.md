@@ -1,5 +1,12 @@
 # Installing Arch Linux and configuring it the way I like
 
+**Content:**
+
+- [Pre-installation](#pre-installation)
+- [Installing the system](#installing-the-system)
+- [Installing and configuring desktop environment](#installing-and-configuring-desktop-environment)
+- [Configure ASUS tools](#configure-asus-tools)
+
 ## Pre-installation
 
 1. Set keyboard layout
@@ -40,7 +47,7 @@ mkswap </dev/swap_partition>
 mkfs.fat -F 32 </dev/efi_system_partition>
 ```
 
-6. Mount the file systems
+6. Mount the filesystems
 
 ```bash
 mount </dev/root_partition> /mnt
@@ -59,7 +66,7 @@ sudo reflector --country BR,US --protocol https --sort rate --connection-timeout
 2. Install essential packages
 
 ```bash
-pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode grub efibootmgr networkmanager firewalld openssh openssl openvpn man-db man-pages curl wget reflector tmux helix zsh zsh-completions git
+pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode grub efibootmgr networkmanager firewalld openssh openssl openvpn man-db man-pages curl wget reflector tmux helix git
 ```
 
 3. Generate a fstab file
@@ -74,80 +81,69 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-5. Change default shell
-
-```bash
-chsh /usr/bin/zsh
-```
-
-6. Change shell and configure
-
-```bash
-zsh
-```
-
-7. Persist the time zone
+5. Persist the time zone
 
 ```bash
 ln -sf /usr/share/zoneinfo/<Region/City> /etc/localtime
 ```
 
-7. Run `hwclock` to generate `/etc/adjtime`
+6. Run `hwclock` to generate `/etc/adjtime`
 
 ```bash
 hwclock --systohc
 ```
 
-6. Edit `/etc/locale.gen`, uncomment `en_US.UTF-8 UTF-8` and generate the locales
+7. Edit `/etc/locale.gen`, uncomment `en_US.UTF-8 UTF-8` and generate the locales
 
 ```bash
 helix /etc/locale.gen
 locale-gen
 ```
 
-7. Create the `locale.conf` file, and set the `LANG` variable accordingly
+8. Create the `locale.conf` file, and set the `LANG` variable accordingly
 
 ```bash
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 
-8. Make keyboard layout changes persistent
+9. Make keyboard layout changes persistent
 
 ```bash
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 ```
 
-9. Configure the host name of the machine
+10. Configure the host name of the machine
 
 ```bash
 echo "ex-machina" >> /etc/hostname
 ```
 
-10. Enable necessary services
+11. Enable necessary services
 
-- `systemctl enable NetworkManager.service`
-- `systemctl enable firewalld.service`
+```bash
+systemctl enable NetworkManager.service firewalld.service
+```
 
-11. Set root password
+12. Set root password
 
 ```bash
 passwd
 ```
 
-14. Build the initcpio image
+13. Build the initcpio image
 
 ```bash
 mkinitcpio -p linux
 ```
 
-15. Configure the bootloader
+14. Configure the bootloader
 
 ```bash
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-16. Exit and reboot machine
+15. Exit system, unmount the filesystems and reboot the machine
 
 ```bash
 exit
@@ -166,74 +162,71 @@ localectl set-keymap br-abnt2
 2. Create and configure the user
 
 ```bash
-useradd --create-home --groups wheel --shell /usr/bin/zsh username
+useradd --create-home --groups wheel --shell /usr/bin/bash yourusername
 visudo # open sudoers file and uncomment wheel group configuration
-passwd username
+passwd yourusername
 ```
 
-3. Exit root account and login into user account
+3. Exit root account and login into your user account
 
 ```bash
 exit
 ```
 
-4. Insert and mount USB stick and copy dotfiles directory to $HOME
-
-5. Go througth the steps in [Setup Dotfiles](/README.md#setup-dotfiles) and [Dependencies installation](/README.md#dependencies-installation) to have a full integrated shell and text editor.
-
-6. Configure pacman
+4. Configure pacman
 
 ```bash
 sudoedit /etc/pacman.conf
 
-# add to /etc/pacman.conf:
+# add to the file:
 # Color=True
 # VerbosePkgLists=True
 # ParallelDownloads=20
 # ILoveCandy=True
 ```
 
-7. Configure NVIDIA drivers
+5. Configure NVIDIA drivers
 
 ```bash
 sudo pacman -Syu nvidia-open
 ```
 
-8. Remove `kms` from the `HOOKS` array in `/etc/mkinitcpio.conf` and regenerate the initramfs
+6. Remove `kms` from the `HOOKS` array in `/etc/mkinitcpio.conf` and regenerate the initramfs
 
 ```bash
 sudo mkinitcpio -p linux
 ```
 
-9. Configure NVIDIA modeset in kernel parameters located at `/etc/default/grub`
+7. Configure NVIDIA modeset in kernel parameters located at `/etc/default/grub`
 
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nvidia_drm.NVreg_PreserveVideoMemoryAllocations=1"
 ```
 
-10. Install desktop environment and other packages
+8. Install desktop environment and other packages
 
 ```bash
 sudo pacman -Syu \
   sway \
   brightnessctl \
   foot \
-  grim \
-  libpulse \
   mako \
   udiskie \
-  polkit \
   swaybg \
   swayidle \
   swaylock \
-  i3status \
-  wmenu \
+  dmenu \
   xorg-xwayland \
   xdg-desktop-portal-gtk \
-  xdg-desktop-portal-wlr
+  xdg-desktop-portal-wlr \
+  pipewire \
+  pipewire-alsa \
+  pipewire-pulse \
+  pipewire-jack \
+  pipewire-jack
 ```
 
-11. Reboot system.
+9. Reboot system.
 
 ## Configure ASUS tools
 

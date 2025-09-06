@@ -24,7 +24,7 @@ tooltip {
 #memory,
 #battery,
 #network,
-#pulseaudio {
+#wireplumber {
   margin: 6px;
   color: #c7f9cc;
 }
