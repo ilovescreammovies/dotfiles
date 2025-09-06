@@ -1,125 +1,82 @@
 {
+  "layer": "top",
   "position": "top",
-  "spacing": 2,
-  "output": "eDP-1",
+  "spacing": 0,
+  "height": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
   "modules-left": [
     "sway/workspaces",
-    "sway/mode",
+    "sway/mode"
+  ],
+  "modules-center": [
     "clock"
   ],
   "modules-right": [
+    "tray",
     "cpu",
     "temperature",
     "memory",
-    "disk",
-    "network",
-    "idle_inhibitor",
-    "power-profiles-daemon",
-    "pulseaudio",
     "battery",
-    "tray"
+    "network",
+    "pulseaudio"
   ],
   "sway/workspaces": {
-    "all-outputs": false
+    "all-outputs": true,
+    "disable-scroll": true
   },
   "sway/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
-  "sway/scratchpad": {
-    "format": "{icon} {count}",
-    "show-empty": false,
-    "format-icons": [
-      "",
-      ""
-    ],
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
-  },
-  "idle_inhibitor": {
-    "format": "Caffeine: {status}",
-    "tootip": false
-  },
-  "disk": {
-    "format": "{used} / {total}"
+  "clock": {
+    "format": "{:%a %d, %H:%M}",
+    "tooltip": false
   },
   "tray": {
-    "icon-size": 21,
-    "spacing": 10
-  },
-  "clock": {
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%d-%m-%Y}"
+    "spacing": 10,
+    "tooltip": false
   },
   "cpu": {
-    "format": "CPU: {usage}%",
+    "format": "cpu {usage}%",
+    "interval": 2,
+    "states": {
+      "critical": 90
+    }
+  },
+  "temperature": {
+    "format": "temp {temperatureC}°C",
     "tooltip": false
   },
   "memory": {
-    "format": "Mem: {used:0.1f}G / {total:0.1f}G",
-    "tooltip": false
-  },
-  "temperature": {
-    "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ],
-    "tooltip": false
+    "format": "mem {percentage}%",
+    "interval": 2,
+    "states": {
+      "critical": 80
+    }
   },
   "battery": {
+    "format": "bat {capacity}%",
+    "interval": 5,
     "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 15
+      "warning": 20,
+      "critical": 10
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
-  "power-profiles-daemon": {
-    "format": "{icon}",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
-    }
+    "tooltip": false
   },
   "network": {
-    "format-wifi": "{essid} ({signalStrength}%) Up: {bandwidthUpBytes} Down: {bandwidthDownBytes}"
+    "format-wifi": "wifi up",
+    "format-ethernet": "ethernet up",
+    "format-disconnected": "no network",
+    "tooltip": false
   },
   "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    }
+    "format": "vol {volume}%",
+    "format-bluetooth": "vol {volume}%",
+    "format-muted": "vol muted",
+    "max-volume": 150,
+    "on-click": "pavucontrol",
+    "scroll-step": 5
   }
 }

@@ -89,6 +89,7 @@ alias ls="ls --color=auto"
 alias grep="rg --color=auto"
 alias top="top -E g -e g"
 alias mkdir="mkdir -p"
+alias ls="ls -lah"
 
 # Variables
 export EDITOR=helix
@@ -103,6 +104,9 @@ export PS2="%_ > "
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# Zoxide
+eval "$(zoxide init zsh)"
 
 # Exit to the current working directory after closing Yazi
 function y() {

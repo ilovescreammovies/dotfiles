@@ -10,7 +10,7 @@
 set $mod Mod4
 
 # System font
-font NotoSansMono Regular 11
+font "DejaVuSansM Nerd Font" Regular 11
 
 # Home row direction keys, like vim
 set $left h
@@ -50,7 +50,6 @@ input type:touchpad {
 input type:keyboard {
   xkb_layout "br"
 }
-
 
 # Key bindings
 
