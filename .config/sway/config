@@ -4,7 +4,15 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
+
+# Colorscheme
+set $cl_dark_focused #5E936C
+set $cl_text_focused #222831
+client.focused $cl_dark_focused $cl_dark_focused $cl_text_focused $cl_dark_focused $cl_dark_focused
+
+set $cl_dark_unfocused #222831
+set $cl_text_unfocused #57564F
+client.unfocused $cl_dark_unfocused $cl_dark_unfocused $cl_text_unfocused $cl_dark_unfocused $cl_dark_unfocused
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -22,11 +30,11 @@ set $right l
 set $term foot
 
 # Preferred application launcher
-set $menu dmenu_run -fn 'DejaVuSansM Nerd Font-11'
+set $menu dmenu_run -b -m 0 -fn 'DejaVuSansM Nerd Font-11' -nb '#5E936C' -nf '#222831' -sb '#222831' -sf '#5E936C'
 
 # Output configuration
-output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
-output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/TuxAgainstWindows.jpg fill
+output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/Galaxy.png fill
+output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 
 # Idle configuration
 exec swayidle -w \

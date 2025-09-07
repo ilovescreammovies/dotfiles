@@ -1,39 +1,24 @@
 * {
+  min-height: 0;
+  padding: 0;
   border: none;
   border-radius: 0;
-  min-height: 0;
   font-family: 'DejaVuSansM Nerd Font';
-  font-weight: bold;
   font-size: 14px;
-  padding: 0;
-}
-
-window#waybar {
-  background-color: #023047;
 }
 
 tooltip {
-  background-color: #023047;
-  border: 2px solid #7cc6fe;
+  background-color: #222831;
 }
 
-#clock,
-#tray,
-#cpu,
-#temperature,
-#memory,
-#battery,
-#network,
-#wireplumber {
-  margin: 6px;
-  color: #c7f9cc;
+#waybar {
+  background-color: #222831;
 }
-
 
 #workspaces button {
-  margin: 4px 2px;
-  padding: 4px;
-  color: #124e78;
+  padding: 2px;
+  margin: 4px;
+  color: #5E936C;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -44,15 +29,38 @@ tooltip {
 }
 
 #workspaces button.focused {
-  background-color: #124e78;
-  color: #c7f9cc;
-  border-bottom: 2px solid #DC602E;
+  background-color: #5E936C;
+  color: #1d2021;
+  font-weight: bold;
 }
 
 #workspaces button.urgent {
   background-color: #C04E21;
-  font-weight: bold;
   color: #1d2021;
+  font-weight: bold;
+}
+
+#clock,
+#tray,
+#cpu,
+#temperature,
+#memory,
+#battery,
+#network,
+#wireplumber {
+  color: #5E936C;
+  padding: 2px;
+  margin: 4px;
+}
+
+#clock {
+  font-weight: bold;
+}
+
+#battery.warning {
+  background-color: #F1D302;
+  color: #1d2021;
+  border-bottom: 2px dotted #C04E21;
 }
 
 #cpu.critical,
@@ -60,13 +68,6 @@ tooltip {
 #memory.critical,
 #battery.critical {
   background-color: #C04E21;
-  border: 2px dotted #F1D302;
   color: #1d2021;
-}
-
-
-#battery.warning {
-  background-color: #F1D302;
-  border: 2px dotted #C04E21;
-  color: #1d2021;
+  border: 2px solid #F1D302;
 }

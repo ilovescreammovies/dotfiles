@@ -32,11 +32,10 @@
     "format": "<span style=\"italic\">{}</span>"
   },
   "clock": {
-    "format": "{:%a %d, %H:%M}",
+    "format": "{:%a %d/%m/%Y %H:%M}",
     "tooltip": false
   },
   "tray": {
-    "spacing": 10,
     "tooltip": false
   },
   "cpu": {
@@ -48,6 +47,7 @@
   },
   "temperature": {
     "format": "temp {temperatureC}°C",
+    "interval": 2,
     "tooltip": false
   },
   "memory": {
@@ -75,12 +75,14 @@
   "wireplumber#sink": {
     "format": "vol {volume}%",
     "format-muted": "vol muted",
-    "scroll-step": 5
+    "scroll-step": 5,
+    "tooltip": false
   },
   "wireplumber#source": {
     "node-type": "Audio/Source",
     "format": "mic {volume}%",
     "format-muted": "mic muted",
-    "scroll-step": 1
+    "scroll-step": 1,
+    "tooltip": false
   }
 }
