@@ -33,8 +33,8 @@ set $term foot
 set $menu dmenu_run -b -m 0 -fn 'DejaVuSansM Nerd Font-11' -nb '#5E936C' -nf '#222831' -sb '#222831' -sf '#5E936C'
 
 # Output configuration
-output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/Galaxy.png fill
-output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+output '*' mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+# output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 
 # Idle configuration
 exec swayidle -w \

@@ -26,10 +26,12 @@
   ],
   "sway/workspaces": {
     "all-outputs": true,
-    "disable-scroll": true
-  },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
+    "disable-scroll": true,
+    "persistent-workspaces": {
+      "1": [
+        "eDP-1"
+      ]
+    }
   },
   "clock": {
     "format": "{:%a %d/%m/%Y %H:%M}",
