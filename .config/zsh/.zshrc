@@ -1,3 +1,13 @@
+# Path variable setup
+typeset -U path
+path+=(
+	/bin
+	/usr/bin
+	/usr/local/bin
+	/usr/local/go/bin
+	~/go/bin
+)
+
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000
@@ -64,16 +74,6 @@ zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f
 # source $DOTFILES/zsh/plugins/kubectl-completion/_kubectl
 # zstyle ':completion:*:*:kubectl:*' list-grouped false
 
-# Path variable setup
-typeset -U path
-path+=(
-	/bin
-	/usr/bin
-	/usr/local/bin
-	/usr/local/go/bin
-	~/go/bin
-)
-
 # Source installed plugins
 shared_plugins=/usr/share/zsh/plugins
 source $shared_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -97,7 +97,7 @@ export VISUAL=helix
 
 # Prompt
 export PS1="%F{cyan}%c%f%b %# "
-export RPS1="%F{green}%n%f@%F{magenta}%m%f"
+# export RPS1="%F{green}%n%f@%F{magenta}%m%f"
 export PS2="%_ > "
 
 # NVM

@@ -38,6 +38,9 @@ exec swayidle -w \
 # Automount removable devices
 exec udiskie &
 
+# Day/night gamma setup
+exec wlsunset -T 5800 -t 4500 -S 06:00 -s 17:30 &
+
 # Input configuration
 # Read `man 5 sway-input` for more information about this section.
  
