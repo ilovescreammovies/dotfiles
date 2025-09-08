@@ -4,8 +4,45 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+### Variables set
 
-# Colorscheme
+set $mod Mod4
+
+set $term foot
+
+set $menu dmenu_run -b -m 0 \
+	-fn 'DejaVuSansM Nerd Font-11' \
+	-nb '#5E936C' -nf '#222831' \
+	-sb '#222831' -sf '#5E936C'
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+### Video output setup
+
+output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+
+### Input setup
+ 
+input type:touchpad {
+  tap enabled
+  natural_scroll disabled
+  middle_emulation enabled
+}
+
+input type:keyboard {
+  xkb_layout "br"
+}
+
+### Font
+
+font "DejaVuSansM Nerd Font" Regular 11
+
+### Window colorscheme
+
 set $cl_dark_focused #5E936C
 set $cl_text_focused #222831
 client.focused $cl_dark_focused $cl_dark_focused $cl_text_focused $cl_dark_focused $cl_dark_focused
@@ -14,27 +51,11 @@ set $cl_dark_unfocused #222831
 set $cl_text_unfocused #57564F
 client.unfocused $cl_dark_unfocused $cl_dark_unfocused $cl_text_unfocused $cl_dark_unfocused $cl_dark_unfocused
 
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
+set $cl_dark_urgent #C04E21
+set $cl_text_urgent #1d2021
+client.urgent $cl_dark_urgent $cl_dark_urgent $cl_text_urgent $cl_dark_urgent $cl_dark_urgent
 
-# System font
-font "DejaVuSansM Nerd Font" Regular 11
-
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-
-# Preferred terminal emulator
-set $term foot
-
-# Preferred application launcher
-set $menu dmenu_run -b -m 0 -fn 'DejaVuSansM Nerd Font-11' -nb '#5E936C' -nf '#222831' -sb '#222831' -sf '#5E936C'
-
-# Output configuration
-output '*' mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
-# output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+### Utility programs
 
 # Idle configuration
 exec swayidle -w \
@@ -49,20 +70,7 @@ exec udiskie &
 # Day/night gamma setup
 exec wlsunset -T 5800 -t 4500 -S 06:00 -s 17:30 &
 
-# Input configuration
-# Read `man 5 sway-input` for more information about this section.
- 
-input type:touchpad {
-  tap enabled
-  natural_scroll disabled
-  middle_emulation enabled
-}
-
-input type:keyboard {
-  xkb_layout "br"
-}
-
-# Key bindings
+### Key bindings
 
 # Start a terminal
 bindsym $mod+Return exec $term
@@ -92,23 +100,11 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# Or use $mod+[up|down|left|right]
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # Move the focused window with the same, but add Shift
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-
-# Ditto, with arrow keys
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # Switch to workspace
 bindsym $mod+1 workspace number 1
@@ -134,18 +130,11 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 # Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
 
 # You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
+# $mod+b or $mod+v, for horizontal and vertical splits respectively.
 bindsym $mod+b splith
 bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # Make the current focus fullscreen
 bindsym $mod+f fullscreen
@@ -192,8 +181,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-
-### Utilities
 
 # Special keys to adjust audio via Wireplumber
 bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

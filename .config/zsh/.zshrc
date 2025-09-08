@@ -85,11 +85,10 @@ alias hx="helix"
 alias lg="lazygit"
 alias ld="lazydocker"
 alias lj="lazyjournal"
-alias ls="ls --color=auto"
+alias ls="ls --color=auto -lah"
 alias grep="rg --color=auto"
 alias top="top -E g -e g"
 alias mkdir="mkdir -p"
-alias ls="ls -lah"
 
 # Variables
 export EDITOR=helix
