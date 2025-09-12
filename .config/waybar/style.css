@@ -3,21 +3,22 @@
   padding: 0;
   border: none;
   border-radius: 0;
-  font-family: 'DejaVuSansM Nerd Font';
-  font-size: 14px;
+  font: 14px 'DejaVuSansM Nerd Font';
+}
+
+window#waybar {
+  background: #222831;
+  transition-property: background-color;
+  transition-duration: .5s;
 }
 
 tooltip {
-  background-color: #222831;
-}
-
-#waybar {
-  background-color: #222831;
+  background: #222831;
+  border: 2px solid #C04E21;
 }
 
 #workspaces button {
   padding: 2px;
-  margin: 4px;
   color: #5E936C;
 }
 
@@ -29,17 +30,18 @@ tooltip {
 }
 
 #workspaces button.focused {
-  background-color: #5E936C;
+  background: #5E936C;
   color: #1d2021;
   font-weight: bold;
 }
 
 #workspaces button.urgent {
-  background-color: #C04E21;
+  background: #C04E21;
   color: #1d2021;
   font-weight: bold;
 }
 
+#idle_inhibitor,
 #mode,
 #clock,
 #tray,
@@ -48,10 +50,15 @@ tooltip {
 #memory,
 #battery,
 #network,
-#wireplumber {
+#backlight,
+#wireplumber,
+#custom-power {
+  padding: 4px 8px;
   color: #5E936C;
-  padding: 2px;
-  margin: 4px;
+}
+
+#idle_inhibitor.activated {
+  box-shadow: inset 0 2px #C04E21;
 }
 
 #clock {
@@ -59,16 +66,25 @@ tooltip {
 }
 
 #battery.warning {
-  background-color: #F1D302;
+  background: #F1D302;
   color: #1d2021;
-  border-bottom: 2px dotted #C04E21;
+  box-shadow: inset 0 2px #C04E21;
 }
 
 #cpu.critical,
 #temperature.critical,
 #memory.critical,
 #battery.critical {
-  background-color: #C04E21;
+  background: #C04E21;
   color: #1d2021;
-  border: 2px solid #F1D302;
+  box-shadow: inset 0 2px #F1D302;
+}
+
+#tray>.passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #C04E21;
 }

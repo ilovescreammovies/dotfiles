@@ -9,20 +9,23 @@
   "margin-right": 0,
   "modules-left": [
     "sway/workspaces",
+    "tray",
     "sway/mode"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
-    "tray",
+    "idle_inhibitor",
     "cpu",
     "temperature",
     "memory",
-    "battery",
     "network",
+    "backlight",
     "wireplumber#sink",
-    "wireplumber#source"
+    "wireplumber#source",
+    "battery",
+    "custom/power"
   ],
   "sway/workspaces": {
     "all-outputs": true,
@@ -33,12 +36,20 @@
       ]
     }
   },
+  "idle_inhibitor": {
+    "format": "idle inhib {icon}",
+    "format-icons": {
+      "activated": "on",
+      "deactivated": "off"
+    }
+  },
   "clock": {
     "format": "{:%a %d/%m/%Y %H:%M}",
     "tooltip": false
   },
   "tray": {
-    "tooltip": false
+    "tooltip": false,
+    "spacing": 12
   },
   "cpu": {
     "format": "cpu {usage}%",
@@ -48,9 +59,15 @@
     }
   },
   "temperature": {
-    "format": "temp {temperatureC}°C",
     "interval": 2,
-    "tooltip": false
+    "critical-threshold": 80,
+    "tooltip": false,
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
   "memory": {
     "format": "mem {percentage}%",
@@ -60,19 +77,45 @@
     }
   },
   "battery": {
-    "format": "bat {capacity}%",
     "interval": 5,
     "states": {
+      "good": 95,
       "warning": 20,
       "critical": 10
     },
-    "tooltip": false
+    "tooltip": false,
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "network": {
     "format-wifi": "wifi up",
     "format-ethernet": "ethernet up",
     "format-disconnected": "no network",
     "tooltip": false
+  },
+  "backlight": {
+    "format": "light: {percent}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "wireplumber#sink": {
     "format": "vol {volume}%",
@@ -86,5 +129,17 @@
     "format-muted": "mic muted",
     "scroll-step": 1,
     "tooltip": false
+  },
+  "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown +0",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
   }
 }
