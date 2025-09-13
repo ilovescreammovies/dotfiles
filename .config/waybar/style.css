@@ -3,7 +3,7 @@
   padding: 0;
   border: none;
   border-radius: 0;
-  font: 14px 'DejaVuSansM Nerd Font';
+  font: 14px 'JetBrainsMono Nerd Font';
 }
 
 window#waybar {
@@ -42,6 +42,7 @@ tooltip {
 }
 
 #idle_inhibitor,
+#power-profiles-daemon,
 #mode,
 #clock,
 #tray,
@@ -57,8 +58,13 @@ tooltip {
   color: #5E936C;
 }
 
+
 #idle_inhibitor.activated {
   box-shadow: inset 0 2px #C04E21;
+}
+
+#mode {
+  font-style: italic;
 }
 
 #clock {
@@ -68,6 +74,7 @@ tooltip {
 #battery.warning {
   background: #F1D302;
   color: #1d2021;
+  font-weight: bold;
   box-shadow: inset 0 2px #C04E21;
 }
 
@@ -77,6 +84,7 @@ tooltip {
 #battery.critical {
   background: #C04E21;
   color: #1d2021;
+  font-weight: bold;
   box-shadow: inset 0 2px #F1D302;
 }
 

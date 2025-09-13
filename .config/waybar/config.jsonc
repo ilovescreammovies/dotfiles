@@ -17,6 +17,7 @@
   ],
   "modules-right": [
     "idle_inhibitor",
+    "power-profiles-daemon",
     "cpu",
     "temperature",
     "memory",
@@ -43,16 +44,27 @@
       "deactivated": "off"
     }
   },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
   "clock": {
     "format": "{:%a %d/%m/%Y %H:%M}",
-    "tooltip": false
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
   },
   "tray": {
     "tooltip": false,
-    "spacing": 12
+    "spacing": 8
   },
   "cpu": {
-    "format": "cpu {usage}%",
+    "format": "cpu {usage}% ",
     "interval": 2,
     "states": {
       "critical": 90
@@ -70,7 +82,7 @@
     ]
   },
   "memory": {
-    "format": "mem {percentage}%",
+    "format": "mem {percentage}% ",
     "interval": 2,
     "states": {
       "critical": 80
@@ -98,13 +110,13 @@
     ]
   },
   "network": {
-    "format-wifi": "wifi up",
-    "format-ethernet": "ethernet up",
-    "format-disconnected": "no network",
+    "format-wifi": "up  ",
+    "format-ethernet": "up  ",
+    "format-disconnected": "no internet",
     "tooltip": false
   },
   "backlight": {
-    "format": "light: {percent}% {icon}",
+    "format": "backlight {icon}",
     "format-icons": [
       "",
       "",
@@ -115,18 +127,24 @@
       "",
       "",
       ""
-    ]
+    ],
+    "tooltip": false
   },
   "wireplumber#sink": {
-    "format": "vol {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "vol muted",
     "scroll-step": 5,
-    "tooltip": false
+    "tooltip": false,
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
   "wireplumber#source": {
     "node-type": "Audio/Source",
-    "format": "mic {volume}%",
-    "format-muted": "mic muted",
+    "format": " {volume}%",
+    "format-muted": "",
     "scroll-step": 1,
     "tooltip": false
   },
@@ -136,7 +154,7 @@
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml",
     "menu-actions": {
-      "shutdown": "shutdown +0",
+      "shutdown": "shutdown && notify-send -u critical 'System shutting down in 60 seconds...'",
       "reboot": "reboot",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate"

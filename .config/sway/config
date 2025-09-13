@@ -10,10 +10,20 @@ set $mod Mod4
 
 set $term foot
 
-set $menu dmenu_run -b -m 0 \
-	-fn 'DejaVuSansM Nerd Font-11' \
-	-nb '#5E936C' -nf '#222831' \
-	-sb '#222831' -sf '#5E936C'
+set $menu bemenu-run --center \
+	--monitor focused \
+	--prompt 'run:' \
+	--fn 'JetBrainsMono Nerd Font' 11 \
+	-M 500 \
+	--border 2 \
+	--bdr '#5E936C' \
+	--no-overlap \
+	--tb '#222831' --tf '#5E936C' \
+	--fb '#222831' --ff '#C04E21' \
+	--cb '#222831' --cf '#C04E21' \
+	--nb '#222831' --nf '#5E936C' \
+	--hb '#C04E21' --hf '#222831' \
+	--ab '#222831' --af '#5E936C'
 
 set $left h
 set $down j
@@ -24,6 +34,8 @@ set $right l
 
 output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
+
+workspace 1 output eDP-1
 
 ### Input setup
  
@@ -39,7 +51,7 @@ input type:keyboard {
 
 ### Font
 
-font "DejaVuSansM Nerd Font" Regular 11
+font "JetBrainsMono Nerd Font" Regular 11
 
 ### Window colorscheme
 
@@ -68,7 +80,7 @@ exec swayidle -w \
 exec udiskie &
 
 # Day/night gamma setup
-exec wlsunset -T 5800 -t 4500 -S 06:00 -s 17:30 &
+exec wlsunset -T 5800 -t 4800 -S 06:00 -s 17:30 &
 
 ### Key bindings
 
