@@ -6,6 +6,7 @@ path+=(
 	/usr/local/bin
 	/usr/local/go/bin
 	~/go/bin
+	~/.local/bin
 )
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -20,7 +21,8 @@ unsetopt autocd
 bindkey -v
 export KEYTIMEOUT=1
 
-autoload -U compinit; compinit
+autoload -U compinit
+compinit
 _comp_options+=(globdots)
 setopt MENU_COMPLETE
 setopt AUTO_LIST
@@ -56,7 +58,7 @@ zstyle ':completion:*:*:*:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 
 # Colors for files and directory
-zstyle ':completion:*:*:*:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:*:*:*:default' list-colors '${(s.:.)LS_COLORS}'
 
 # Only display some tags for the command cd
 zstyle ':completion:*:*:cd:*' tag-order local-directories directory-stack path-directories
@@ -95,7 +97,7 @@ export EDITOR=helix
 export VISUAL=helix
 
 # Prompt
-export PS1="%F{cyan}%c%f%b %# "
+export PS1="%F{cyan}%c%f%b %F{magenta}%#%f "
 # export RPS1="%F{green}%n%f@%F{magenta}%m%f"
 export PS2="%_ > "
 

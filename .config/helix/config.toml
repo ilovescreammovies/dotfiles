@@ -33,9 +33,9 @@ right = [
   "position",
   "position-percentage",
 ]
-mode.normal = "NOR"
-mode.insert = "INS"
-mode.select = "SEL"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "VISUAL"
 
 [editor.lsp]
 display-inlay-hints = false

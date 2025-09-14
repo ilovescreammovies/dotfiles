@@ -115,15 +115,19 @@ formatter = { command = "biome", args = [
 
 [[language]]
 name = "sql"
-# formatter = { command = "sqlformat", args = [
-#   "--indent_width",
-#   "2",
-#   "--keywords",
-#   "upper",
-#   "--identifiers",
-#   "lower",
-#   "-",
-# ] }
+formatter = { command = "pg_format", args = [
+  "--function-case",
+  "2",
+  "--keyword-case",
+  "2",
+  "--type-case",
+  "2",
+  "--wrap-limit",
+  "80",
+  "--no-space-function",
+  "--no-extra-line",
+  "-",
+] }
 language-servers = ["postgres-language-server"]
 
 [[language]]
