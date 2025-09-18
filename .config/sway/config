@@ -19,7 +19,7 @@ set $menu bemenu-run --center \
 	--bdr '#5E936C' \
 	--no-overlap \
 	--tb '#222831' --tf '#5E936C' \
-	--fb '#222831' --ff '#C04E21' \
+	--fb '#222831' --ff '#5E936C' \
 	--cb '#222831' --cf '#C04E21' \
 	--nb '#222831' --nf '#5E936C' \
 	--hb '#C04E21' --hf '#222831' \
@@ -32,9 +32,9 @@ set $right l
 
 ### Video output setup
 
-output eDP-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
-output HDMI-A-1 mode 1920x1080@144Hz bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
-
+output eDP-1 mode 1920x1080@144Hz
+output HDMI-A-1 mode 1920x1080@144Hz pos 1920 0
+output '*' bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 workspace 1 output eDP-1
 
 ### Input setup
@@ -47,6 +47,7 @@ input type:touchpad {
 
 input type:keyboard {
   xkb_layout "br"
+  xkb_numlock enabled
 }
 
 ### Font
@@ -75,6 +76,8 @@ exec swayidle -w \
     timeout 800 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f -c 000000'
+
+exec firewall-applet &
 
 # Automount removable devices
 exec udiskie &

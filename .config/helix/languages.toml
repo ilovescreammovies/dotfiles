@@ -4,15 +4,11 @@ postgres-language-server = { command = "postgrestools", args = ["lsp-proxy"] }
 docker-langserver = { command = "docker-langserver", args = [
   "start",
   "--stdio",
-  "--debug",
-  "--verbose",
   "-",
 ] }
 docker-compose-langserver = { command = "docker-compose-langserver", args = [
   "start",
   "--stdio",
-  "--debug",
-  "--verbose",
   "-",
 ] }
 golangci-lint-lsp = { config = { command = [
@@ -24,104 +20,92 @@ golangci-lint-lsp = { config = { command = [
   "--issues-exit-code=1",
 ] } }
 biome = { command = "biome", args = ["lsp-proxy"] }
+marksman = { command = "marksman", args = ["server"] }
 
 [[language]]
 name = "javascript"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["typescript-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.js",
 ] }
 
 [[language]]
 name = "typescript"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["typescript-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.ts",
 ] }
 
 [[language]]
 name = "tsx"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["typescript-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.tsx",
 ] }
 
 [[language]]
 name = "jsx"
-language-servers = [
-  { name = "typescript-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["typescript-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.jsx",
 ] }
 
 [[language]]
 name = "json"
-language-servers = [
-  { name = "vscode-json-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["vscode-json-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.json",
 ] }
 
 [[language]]
 name = "markdown"
+language-servers = ["marksman"]
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
 
 [[language]]
 name = "html"
-language-servers = [
-  { name = "vscode-html-language-server", except-features = [
-    "format",
-  ] },
-  "biome",
-]
+language-servers = ["vscode-html-language-server", "biome"]
 formatter = { command = "biome", args = [
-  "format",
+  "check",
+  "--write",
   "--stdin-file-path",
   "source.html",
+] }
+
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server", "biome"]
+formatter = { command = "biome", args = [
+  "check",
+  "--write",
+  "--stdin-file-path",
+  "source.css",
 ] }
 
 [[language]]
 name = "sql"
 formatter = { command = "pg_format", args = [
   "--function-case",
-  "2",
+  "1",
   "--keyword-case",
   "2",
   "--type-case",
-  "2",
+  "1",
   "--wrap-limit",
   "80",
   "--no-space-function",
@@ -139,10 +123,6 @@ language-servers = ["gopls", "golangci-lint-lsp"]
 name = "bash"
 indent = { tab-width = 4, unit = "\t" }
 formatter = { command = "shfmt" }
-
-[[language]]
-name = "markdown"
-soft-wrap = { enable = true }
 
 [[language]]
 name = "toml"

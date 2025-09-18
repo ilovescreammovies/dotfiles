@@ -139,7 +139,8 @@
       "",
       "",
       ""
-    ]
+    ],
+    "max-volume": 150
   },
   "wireplumber#source": {
     "node-type": "Audio/Source",
