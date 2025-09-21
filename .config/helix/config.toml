@@ -1,4 +1,4 @@
-theme = "focus_nova"
+theme = "dracula"
 
 [editor]
 scrolloff = 10

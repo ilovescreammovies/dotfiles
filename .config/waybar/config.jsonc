@@ -9,13 +9,14 @@
   "margin-right": 0,
   "modules-left": [
     "sway/workspaces",
-    "tray",
-    "sway/mode"
+    "sway/mode",
+    "sway/scratchpad"
   ],
   "modules-center": [
     "clock"
   ],
   "modules-right": [
+    "tray",
     "idle_inhibitor",
     "power-profiles-daemon",
     "cpu",
@@ -62,6 +63,16 @@
   "tray": {
     "tooltip": false,
     "spacing": 8
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": [
+      "",
+      ""
+    ],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
   },
   "cpu": {
     "format": "cpu {usage}% ",

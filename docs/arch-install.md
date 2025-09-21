@@ -228,6 +228,18 @@ sudo pacman -Syu \
 
 9. Reboot system.
 
+## Default applications
+
+Use `xdg-mime` to setup default user applications.
+
+Example:
+
+> Ensure the desktop entry file exists before running the command.
+
+```bash
+xdg-mime default my-pdf-opener.desktop application/pdf
+```
+
 ## Configure ASUS tools
 
 _Reference:_ [Arch Setup Guide - Asus](https://asus-linux.org/guides/arch-guide)

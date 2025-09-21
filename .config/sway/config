@@ -32,10 +32,13 @@ set $right l
 
 ### Video output setup
 
-output eDP-1 mode 1920x1080@144Hz
-output HDMI-A-1 mode 1920x1080@144Hz pos 1920 0
+output eDP-1 mode 1920x1080@144Hz pos 1920 0
+output HDMI-A-1 mode 1920x1080@144Hz
 output '*' bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 workspace 1 output eDP-1
+
+### Cursor theme
+seat seat0 xcursor_theme ComixCursors-White 32
 
 ### Input setup
  
@@ -208,6 +211,8 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Special key to take a screenshot with flameshot
+for_window [app_id="flameshot"] floating enable
+for_window [app_id="flameshot"] focus
 bindsym Print exec flameshot gui
 
 ### Status bar

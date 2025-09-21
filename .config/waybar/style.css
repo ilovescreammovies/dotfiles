@@ -1,46 +1,47 @@
 * {
-  min-height: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  font: 14px 'JetBrainsMono Nerd Font';
+	min-height: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	font: 14px "JetBrainsMono Nerd Font";
 }
 
 window#waybar {
-  background: #222831;
-  transition-property: background-color;
-  transition-duration: .5s;
+	background: #222831;
+	transition-property: background-color;
+	transition-duration: 0.5s;
 }
 
 tooltip {
-  background: #222831;
-  border: 2px solid #C04E21;
+	background: #222831;
+	border: 2px solid #c04e21;
 }
 
 #workspaces button {
-  padding: 2px;
-  color: #5E936C;
+	padding: 2px;
+	color: #5e936c;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-  background: inherit;
-  box-shadow: inherit;
-  text-shadow: inherit;
+	background: inherit;
+	box-shadow: inherit;
+	text-shadow: inherit;
 }
 
 #workspaces button.focused {
-  background: #5E936C;
-  color: #1d2021;
-  font-weight: bold;
+	background: #5e936c;
+	color: #1d2021;
+	font-weight: bold;
 }
 
 #workspaces button.urgent {
-  background: #C04E21;
-  color: #1d2021;
-  font-weight: bold;
+	background: #c04e21;
+	color: #1d2021;
+	font-weight: bold;
 }
 
+#scratchpad,
 #idle_inhibitor,
 #power-profiles-daemon,
 #mode,
@@ -54,45 +55,44 @@ tooltip {
 #backlight,
 #wireplumber,
 #custom-power {
-  padding: 4px 8px;
-  color: #5E936C;
+	padding: 4px 8px;
+	color: #5e936c;
 }
 
-
 #idle_inhibitor.activated {
-  box-shadow: inset 0 2px #C04E21;
+	box-shadow: inset 0 2px #c04e21;
 }
 
 #mode {
-  font-style: italic;
+	font-style: italic;
 }
 
 #clock {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 #battery.warning {
-  background: #F1D302;
-  color: #1d2021;
-  font-weight: bold;
-  box-shadow: inset 0 2px #C04E21;
+	background: #f1d302;
+	color: #1d2021;
+	font-weight: bold;
+	box-shadow: inset 0 2px #c04e21;
 }
 
 #cpu.critical,
 #temperature.critical,
 #memory.critical,
 #battery.critical {
-  background: #C04E21;
-  color: #1d2021;
-  font-weight: bold;
-  box-shadow: inset 0 2px #F1D302;
+	background: #c04e21;
+	color: #1d2021;
+	font-weight: bold;
+	box-shadow: inset 0 2px #f1d302;
 }
 
-#tray>.passive {
-  -gtk-icon-effect: dim;
+#tray > .passive {
+	-gtk-icon-effect: dim;
 }
 
-#tray>.needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #C04E21;
+#tray > .needs-attention {
+	-gtk-icon-effect: highlight;
+	background-color: #c04e21;
 }
