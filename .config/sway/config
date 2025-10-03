@@ -13,7 +13,7 @@ set $term foot
 set $menu bemenu-run --center \
 	--monitor focused \
 	--prompt 'run:' \
-	--fn 'JetBrainsMono Nerd Font' 11 \
+	--fn 'CaskaydiaCove Nerd Font' 11 \
 	-M 500 \
 	--border 2 \
 	--bdr '#5E936C' \
@@ -38,7 +38,7 @@ output '*' bg ~/Pictures/Wallpapers/WakeUpNeo.jpg fill
 workspace 1 output eDP-1
 
 ### Cursor theme
-seat seat0 xcursor_theme ComixCursors-White 32
+seat seat0 xcursor_theme ComixCursors-White 24
 
 ### Input setup
  
@@ -55,7 +55,7 @@ input type:keyboard {
 
 ### Font
 
-font "JetBrainsMono Nerd Font" Regular 11
+font "CaskaydiaCove Nerd Font" Regular 11
 
 ### Window colorscheme
 
@@ -86,7 +86,7 @@ exec firewall-applet &
 exec udiskie &
 
 # Day/night gamma setup
-exec wlsunset -T 5800 -t 4800 -S 06:00 -s 17:30 &
+exec wlsunset -T 6000 -t 5000 -S 06:00 -s 17:30 &
 
 ### Key bindings
 
@@ -211,8 +211,6 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Special key to take a screenshot with flameshot
-for_window [app_id="flameshot"] floating enable
-for_window [app_id="flameshot"] focus
 bindsym Print exec flameshot gui
 
 ### Status bar

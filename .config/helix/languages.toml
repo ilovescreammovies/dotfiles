@@ -109,7 +109,8 @@ formatter = { command = "pg_format", args = [
   "--wrap-limit",
   "80",
   "--no-space-function",
-  "--no-extra-line",
+  "--tabs",
+  "--keep-newline",
   "-",
 ] }
 language-servers = ["postgres-language-server"]

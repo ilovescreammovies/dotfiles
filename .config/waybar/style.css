@@ -3,18 +3,19 @@
 	padding: 0;
 	border: none;
 	border-radius: 0;
-	font: 14px "JetBrainsMono Nerd Font";
-}
-
-window#waybar {
-	background: #222831;
-	transition-property: background-color;
-	transition-duration: 0.5s;
+	font: 14px "CaskaydiaCove Nerd Font";
 }
 
 tooltip {
 	background: #222831;
 	border: 2px solid #c04e21;
+}
+
+#waybar {
+	background: #222831;
+	transition-property: background-color;
+	transition-duration: 0.5s;
+	color: #5e936c;
 }
 
 #workspaces button {
@@ -56,7 +57,7 @@ tooltip {
 #wireplumber,
 #custom-power {
 	padding: 4px 8px;
-	color: #5e936c;
+	margin: 0 2px;
 }
 
 #idle_inhibitor.activated {

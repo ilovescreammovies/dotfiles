@@ -1,4 +1,4 @@
-theme = "dracula"
+theme = "tokyonight_moon"
 
 [editor]
 scrolloff = 10
@@ -23,8 +23,8 @@ popup-border = "all"
 cursor-line = "warning"
 
 [editor.statusline]
-left = ["mode", "file-name", "version-control"]
-center = []
+left = ["mode", "file-name"]
+center = ["version-control"]
 right = [
   "spinner",
   "workspace-diagnostics",
