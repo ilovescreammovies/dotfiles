@@ -23,8 +23,8 @@ popup-border = "all"
 cursor-line = "warning"
 
 [editor.statusline]
-left = ["mode", "file-name"]
-center = ["version-control"]
+left = ["mode", "file-name", "version-control"]
+center = []
 right = [
   "spinner",
   "workspace-diagnostics",

@@ -87,13 +87,16 @@ nvm install node
 Install language servers, debuggers, formatters and other tools.
 
 ```bash
-sudo pacman -Sy yaml-language-server \
+sudo pacman -Sy \
+  yaml-language-server \
   bash-language-server \
   typescript-language-server \
   marksman \
   vscode-css-languageserver \
   vscode-html-languageserver \
-  vscode-json-languageserver
+  vscode-json-languageserver \
+  pgformatter \
+  taplo-cli
 ```
 
 ```bash
@@ -102,7 +105,7 @@ go install github.com/go-delve/delve/cmd/dlv@latest && \
 go install mvdan.cc/gofumpt@latest && \
 go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@latest && \
 go install github.com/nametake/golangci-lint-langserver@latest && \
-npm install -g  \
+npm install -g \
   dockerfile-language-server-nodejs@latest \
   @microsoft/compose-language-service@latest \
   @postgrestools/postgrestools@latest \

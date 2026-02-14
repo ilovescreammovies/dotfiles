@@ -74,6 +74,7 @@ formatter = { command = "biome", args = [
 
 [[language]]
 name = "markdown"
+soft-wrap.enable = true
 language-servers = ["marksman"]
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
 

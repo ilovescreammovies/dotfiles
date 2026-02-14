@@ -8,8 +8,9 @@
 #
 # Display manager
 #
+export GDK_BACKEND=wayland
 if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-	exec sway --unsupported-gpu
+	exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 fi
 
 #

@@ -11,19 +11,19 @@
 
 1. Set keyboard layout
 
-```bash
+```shell
 loadkeys br-abnt2
 ```
 
 2. Connect to the internet
 
-```bash
+```shell
 iwctl --passphrase <passphrase> station <name> connect <SSID>
 ```
 
 3. Set machine date and hour
 
-```bash
+```shell
 timedatectl set-timezone America/Sao_Paulo
 ```
 
@@ -35,13 +35,13 @@ timedatectl set-timezone America/Sao_Paulo
 | swap        | 16G      | 8200          |
 | /           | ...      | 8304          |
 
-```bash
+```shell
 gdisk </dev/the_disk_to_be_partitioned>
 ```
 
 5. Format the partitions
 
-```bash
+```shell
 mkfs.ext4 </dev/root_partition>
 mkswap </dev/swap_partition>
 mkfs.fat -F 32 </dev/efi_system_partition>
@@ -49,7 +49,7 @@ mkfs.fat -F 32 </dev/efi_system_partition>
 
 6. Mount the filesystems
 
-```bash
+```shell
 mount </dev/root_partition> /mnt
 mount --mkdir </dev/efi_partition> /mnt/boot
 swapon </dev/swap_partition>
@@ -59,93 +59,140 @@ swapon </dev/swap_partition>
 
 1.  Select best pacman mirrors
 
-```bash
-sudo reflector --country BR,US --protocol https --sort rate --connection-timeout 3 --download-timeout 3 --threads 20 --save /etc/pacman.d/mirrorlist
+```shell
+sudo reflector \
+  --country BR,US \
+  --protocol https \
+  --sort rate \
+  --connection-timeout 3 \
+  --download-timeout 3 \
+  --threads 20 \
+  --save /etc/pacman.d/mirrorlist
 ```
 
 2. Install essential packages
 
-```bash
-pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode grub efibootmgr networkmanager firewalld openssh openssl openvpn man-db man-pages curl wget reflector tmux helix git
+```shell
+pacstrap -K /mnt base base-devel linux linux-firmware intel-ucode networkmanager openssh man-db man-pages curl wget reflector helix git
 ```
 
 3. Generate a fstab file
 
-```bash
+```shell
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 4. Change root into the new system
 
-```bash
+```shell
 arch-chroot /mnt
 ```
 
 5. Persist the time zone
 
-```bash
+```shell
 ln -sf /usr/share/zoneinfo/<Region/City> /etc/localtime
 ```
 
 6. Run `hwclock` to generate `/etc/adjtime`
 
-```bash
+```shell
 hwclock --systohc
 ```
 
 7. Edit `/etc/locale.gen`, uncomment `en_US.UTF-8 UTF-8` and generate the locales
 
-```bash
+```shell
 helix /etc/locale.gen
 locale-gen
 ```
 
 8. Create the `locale.conf` file, and set the `LANG` variable accordingly
 
-```bash
+```shell
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 ```
 
 9. Make keyboard layout changes persistent
 
-```bash
+```shell
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 ```
 
 10. Configure the host name of the machine
 
-```bash
+```shell
 echo "ex-machina" >> /etc/hostname
 ```
 
 11. Enable necessary services
 
-```bash
-systemctl enable NetworkManager.service firewalld.service
+```shell
+systemctl enable NetworkManager.service
 ```
 
 12. Set root password
 
-```bash
+```shell
 passwd
 ```
 
 13. Build the initcpio image
 
-```bash
+```shell
 mkinitcpio -p linux
 ```
 
 14. Configure the bootloader
 
-```bash
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+- Add necessary kernel parameters:
+
+```shell
+# add to /etc/cmdline.d/root.conf
+root=UUID=<root_uuid> rw
 ```
+
+- Change `/etc/mkinitcpio.d/linux.preset` file:
+
+```shell
+# mkinitcpio preset file for the 'linux' package
+
+#ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux"
+
+PRESETS=('default' 'fallback')
+
+#default_config="/etc/mkinitcpio.conf"
+#default_image="/boot/initramfs-linux.img"
+default_uki="/boot/EFI/Linux/arch-linux.boot"
+default_options="--splash=/usr/share/systemd/bootctl/splash-arch.bmp"
+
+#fallback_config="/etc/mkinitcpio.conf"
+#fallback_image="/boot/initramfs-linux-fallback.img"
+fallback_uki="/boot/EFI/Linux/arch-linux-fallback.boot"
+fallback_options="-S autodetect"
+```
+
+- Build the UKI
+
+```shell
+mkdir -p /boot/EFI/Linux
+mkinitcpio -p linux
+```
+
+Optionally, remove any leftover `initramfs-*.img` from `/boot`.
+
+- Configure systemd bootloader
+
+```shell
+bootctl install
+```
+
+Systemd will automatically read the UKI located in `/boot` directory.
 
 15. Exit system, unmount the filesystems and reboot the machine
 
-```bash
+```shell
 exit
 umount -R /mnt
 reboot
@@ -155,13 +202,13 @@ reboot
 
 1. Update `vconsole.conf`
 
-```bash
+```shell
 localectl set-keymap br-abnt2
 ```
 
 2. Create and configure the user
 
-```bash
+```shell
 useradd --create-home --groups wheel --shell /usr/bin/bash yourusername
 visudo # open sudoers file and uncomment wheel group configuration
 passwd yourusername
@@ -169,13 +216,13 @@ passwd yourusername
 
 3. Exit root account and login into your user account
 
-```bash
+```shell
 exit
 ```
 
 4. Configure pacman
 
-```bash
+```shell
 sudoedit /etc/pacman.conf
 
 # add to the file:
@@ -187,42 +234,31 @@ sudoedit /etc/pacman.conf
 
 5. Configure NVIDIA drivers
 
-```bash
+```shell
 sudo pacman -Syu nvidia-open
 ```
 
 6. Remove `kms` from the `HOOKS` array in `/etc/mkinitcpio.conf` and regenerate the initramfs
 
-```bash
+```shell
 sudo mkinitcpio -p linux
 ```
 
-7. Configure NVIDIA modeset in kernel parameters located at `/etc/default/grub`
+7. Configure NVIDIA modeset in kernel parameters
 
-```bash
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nvidia_drm.NVreg_PreserveVideoMemoryAllocations=1"
+```shell
+# add to /etc/cmdline.d/nvidia.conf
+nvidia_drm.modeset=1 nvidia_drm.fbdev=1 nvidia_drm.NVreg_PreserveVideoMemoryAllocations=1
 ```
 
 8. Install desktop environment and other packages
 
-```bash
+```shell
 sudo pacman -Syu \
-  sway \
-  brightnessctl \
-  foot \
-  mako \
-  udiskie \
-  swaybg \
-  swayidle \
-  swaylock \
-  dmenu \
-  xorg-xwayland \
-  xdg-desktop-portal-gtk \
-  xdg-desktop-portal-wlr \
+  gnome \
   pipewire \
   pipewire-alsa \
   pipewire-pulse \
-  pipewire-jack \
   pipewire-jack
 ```
 
@@ -236,7 +272,7 @@ Example:
 
 > Ensure the desktop entry file exists before running the command.
 
-```bash
+```shell
 xdg-mime default my-pdf-opener.desktop application/pdf
 ```
 
@@ -246,7 +282,7 @@ _Reference:_ [Arch Setup Guide - Asus](https://asus-linux.org/guides/arch-guide)
 
 1. Add asus-linux keys to pacman
 
-```bash
+```shell
 sudo pacman-key --recv-keys 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 sudo pacman-key --lsign-key 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
@@ -255,19 +291,19 @@ sudo pacman-key --finger 8F654886F17D497FEFE3DB448B15A6B0E9A3FA35
 
 2. Add to the end of the `/etc/pacman.conf` file
 
-```bash
+```shell
 [g14]
 Server = https://arch.asus-linux.org
 ```
 
 3. Update the repository and install asus tools
 
-```bash
+```shell
 pacman -Syu asusctl power-profiles-daemon rog-control-center supergfxctl switcheroo-control
 ```
 
 4. Enable power daemon and the other tools
 
-```bash
+```shell
 systemctl enable --now power-profiles-daemon supergfxd switcheroo-control
 ```
