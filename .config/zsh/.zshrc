@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$ZDOTDIR/ohmyzsh"
@@ -120,10 +120,6 @@ alias top="top -E g -e g"
 
 export EDITOR=helix
 export VISUAL=helix
-
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/go/bin
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

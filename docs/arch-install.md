@@ -155,8 +155,6 @@ root=UUID=<root_uuid> rw
 - Change `/etc/mkinitcpio.d/linux.preset` file:
 
 ```shell
-# mkinitcpio preset file for the 'linux' package
-
 #ALL_config="/etc/mkinitcpio.conf"
 ALL_kver="/boot/vmlinuz-linux"
 
@@ -164,12 +162,12 @@ PRESETS=('default' 'fallback')
 
 #default_config="/etc/mkinitcpio.conf"
 #default_image="/boot/initramfs-linux.img"
-default_uki="/boot/EFI/Linux/arch-linux.boot"
+default_uki="/boot/EFI/Linux/arch-linux.efi"
 default_options="--splash=/usr/share/systemd/bootctl/splash-arch.bmp"
 
 #fallback_config="/etc/mkinitcpio.conf"
 #fallback_image="/boot/initramfs-linux-fallback.img"
-fallback_uki="/boot/EFI/Linux/arch-linux-fallback.boot"
+fallback_uki="/boot/EFI/Linux/arch-linux-fallback.efi"
 fallback_options="-S autodetect"
 ```
 
